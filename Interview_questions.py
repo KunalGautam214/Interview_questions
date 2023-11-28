@@ -367,6 +367,29 @@ while customer_note != 0:
 print(dict(exchange))
 
 # 35. Create FIFO queue using python
+def add_element(num, q):
+    q.append(num)
+
+def retrieve_element(q):
+    return q.pop(0)
+
+q = []
+n = None
+while True:
+    n = int(input("Select options\n1. Add\n2. Retrieve\n3. Quit\n"))
+    if n == 1:
+        input_number = int(input("Enter number to add:"))
+        add_element(input_number, q)
+        print(q)
+    elif n == 2:
+        if len(q) <= 0:
+            print("Queue underflow")
+        else:
+            pop_element = retrieve_element(q)
+            print(pop_element)
+    elif n == 3:
+        print('Exiting from queue operations')
+        break
 
 # 36. What is map and filter functions in python?
 def map_addition(n):

@@ -445,29 +445,28 @@ print(b)
 # 38. Write a code to divide a list into 2 list in such a way that both list sum should be equal
 # ex: [1, 2, 3, 2, 1], [5, 1, 3]
 l = [1, 2, 3, 5, 1, 3, 2, 1]
-summation = sum(l)
-print(summation)
-new_list = []
-new_list2 = []
-list_s = 0
-pos = []
-for i, v in enumerate(l):
-    if list_s <= summation/2:
-        list_s += v
-        if list_s > summation/2:
-            list_s -= v
-            new_list2.append(v)
-        else:
-            new_list.append(v)
-            pos.append(i)
-    elif list_s == summation / 2:
-        print(list_s)
+total_sum = sum(l)
+half_of_sum = total_sum // 2
+list_1 = []
+list_2 = []
+index_pos = []
+for idx, item in enumerate(l):
+    if sum(list_1) < half_of_sum:
+        list_1.append(item)
+        index_pos.append(idx)
+    if sum(list_1) > half_of_sum:
+        list_1.pop()
+        index_pos.pop()
+    if sum(list_1) == half_of_sum:
+        break
 
-print(list_s, new_list, new_list2)
-if sum(new_list) == sum(new_list2):
-    print(new_list, new_list2)
+[list_2.append(item) for idx, item in enumerate(l) if idx not in index_pos]
+
+print(list_1, list_2)
+if sum(list_1) == sum(list_2):
+    print(list_1, list_2)
 else:
-    print(False)
+    print('Both list can not be divided in 2 list')
 
 # 39. What is polymorphise, method overriding and method overloading?
 

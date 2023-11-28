@@ -353,6 +353,18 @@ print(p.name)
 # 2000, 500, 200, 100, 50, 20, 10, 5, 1
 # Input: 5000
 # Output: {2000: 2, 500: 2}
+from collections import Counter
+customer_note = 4999
+currency_notes = [2000, 500, 200, 100, 50, 20, 10, 5, 1]
+exchange = Counter()
+i = 0
+while customer_note != 0:
+    if customer_note >= currency_notes[i]:
+        exchange[currency_notes[i]] += 1
+        customer_note -= currency_notes[i]
+    elif customer_note < currency_notes[i]:
+        i += 1
+print(dict(exchange))
 
 # 35. Create FIFO queue using python
 

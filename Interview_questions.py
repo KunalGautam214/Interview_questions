@@ -318,25 +318,15 @@ print(l)
 numbers = [5, 10, [15, [20, 25, [30, [35, 40], 45], 50, 55], 60], 65, 70]
 n = 60
 m = 80
-def iterator_list(l):
-    print('iterator_list', l)
-    for i, v in enumerate(l):
-        if isinstance(v, int) and v == n:
-            print('replacing 30')
-            l[i] = m
-        if isinstance(v, list):
-            iterator_list(v)
-def int_value(index, value):
-    print('int_value', index, value)
-    if value == n:
-        numbers[index] = m
-for index, value in enumerate(numbers):
-    print(value)
-    if isinstance(value, int):
-        int_value(index, value)
-    elif isinstance(value, list):
-        print('list')
-        iterator_list(value)
+def replace_numbers(nums, n, m):
+    for idx, item in enumerate(nums):
+        if isinstance(item, int):
+            if item == n:
+                nums[idx] = m
+        elif isinstance(item, list):
+            replace_numbers(item, n, m)
+
+replace_numbers(numbers, n, m)
 print(numbers)
 
 # 32. How to get all, name=Rahul and first 10 records in django ORM query?

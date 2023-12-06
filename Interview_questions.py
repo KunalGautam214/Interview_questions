@@ -168,18 +168,23 @@ print(len(ll))
 # input= [['Harry', 37.21], ['Berry', 37.21], ['Tina', 37.20], ['Akriti', 41], ['Harsh', 39]]
 # output: the second lowest mark getter :['Harry', 'Berry']
 input= [['Harry', 37.21], ['Berry', 37.21], ['Tina', 37.20], ['Akriti', 41], ['Harsh', 39]]
-ll = []
-lowest_name, lowest_mark = input[0][0], input[0][1]
-name, mark = 0, 0
-for i in input:
-    if i == 0:
-        continue
-    if lowest_mark < i[1]:
-        name, mark = lowest_name, lowest_mark
-        lowest_name, lowest_mark = i[0], i[1]
-for i in input:
-    if mark == i[1]:
-        print(i[0], i[1])
+lowest = students[0]
+second_lowest = students[0]
+
+for idx, item in enumerate(students):
+    if lowest[1] > item[1]:
+        second_lowest = lowest
+        lowest = item
+    elif second_lowest[1] > item[1] and lowest[1] != item[1]:
+        second_lowest = item
+    elif lowest[1] == second_lowest[1] and second_lowest[1] != item[1]:
+        second_lowest = item
+name = []
+for item in students:
+    if item[1] == second_lowest[1]:
+        name.append(item[0])
+name.sort()
+[print(n) for n in name]
 
 # 18. Define a python class
 class Employee:

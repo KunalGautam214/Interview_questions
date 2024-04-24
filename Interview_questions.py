@@ -48,8 +48,14 @@ r = data[::-1]
 # 7. Read the file and count word of the file.
 newdata = data.split(' ')
 d = {}
+counter = Counter(newdata)
+print(counter)
 for i in newdata:
-    d.setdefault(i, i.count(i))
+    if i not in d:
+        d[i] = 1
+    else:
+        d[i] += 1
+print(d)
 
 # 8. Write into the file
 with open('newtext.txt', 'a') as f:
